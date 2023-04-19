@@ -1,0 +1,61 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+        <img width="50" height="50" src="../../assets/img/avatar.svg">
+    
+        <p>{{ authUser?.email }}</p>
+    
+
+        <p *ngIf="showFiller">Enlaces de interes <br>
+       
+      <button (click)="showFiller = !showFiller" mat-raised-button >
+        <a href="https://plataforma-login.coderhouse.com/" style="text-decoration:none">
+            Login CoderHause
+        </a>  
+      </button>
+      <br>
+      <br>
+      <button (click)="showFiller = !showFiller" mat-raised-button >
+        <a href="https://www.facebook.com/Coderhouse/?locale=es_LA" style="text-decoration:none">
+            FaceBook CoderHause
+        </a>        
+      </button>
+      <br><br>
+      <button (click)="showFiller = !showFiller" mat-raised-button >
+        <a href="https://www.instagram.com/coderhouse/?hl=es" style="text-decoration:none" >
+            Instagram CoderHause
+        </a>        
+      </button>
+      <br><br>
+      <button (click)="showFiller = !showFiller" mat-raised-button >
+        <a href="https://ar.linkedin.com/school/coderhouse/people" style="text-decoration:none" >
+            Linkedin CoderHause
+        </a>        
+      </button>
+        </p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+          {{ showFiller ? 'Ver menos' : 'Ver mas'}}
+        </button>  
+    
+
+     
+      
+    </mat-drawer>
+    <mat-toolbar color="primary">
+        <button type="button"  mat-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Listado Estudiantes</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>school</mat-icon>
+        </button>
+        <p>{{ authUser?.nombre }}</p>
+    </mat-toolbar>
+
+    <!-- <app-table></app-table> -->
+
+    {{ authUserObs$ | async | json }}
+    <app-observables></app-observables>
+  
+</mat-drawer-container>
